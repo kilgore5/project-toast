@@ -24,9 +24,11 @@ function ToastProvider({ children }) {
     setToasts([...toastsToKeep]);
   };
 
-  const removeAllToasts = () => {
+  // use `useCallback` to memoize the function
+  // since the callback is added as a dependency in SetToasts
+  const removeAllToasts = React.useCallback(() => {
     setToasts([]);
-  };
+  }, []);
 
   useEscapeKey(removeAllToasts);
 
