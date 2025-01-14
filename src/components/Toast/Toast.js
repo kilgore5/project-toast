@@ -11,6 +11,8 @@ import VisuallyHidden from '../VisuallyHidden';
 
 import styles from './Toast.module.css';
 
+import { ToastContext } from '../ToastProvider';
+
 const ICONS_BY_VARIANT = {
   notice: Info,
   warning: AlertTriangle,
@@ -18,7 +20,9 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({ id, message, variant, removeToast }) {
+function Toast({ id, message, variant }) {
+  const { removeToast } = React.useContext(ToastContext);
+
   const Icon = ICONS_BY_VARIANT[variant];
   const variantStyles = styles[variant];
 
