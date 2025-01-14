@@ -6,10 +6,7 @@ import styles from './ToastShelf.module.css';
 import { ToastContext } from '../ToastProvider';
 
 function ToastShelf() {
-  const { toasts, removeToast, removeAllToasts } =
-    React.useContext(ToastContext);
-
-  useEscapeKey(removeAllToasts);
+  const { toasts, removeToast } = React.useContext(ToastContext);
 
   return (
     <ol
@@ -30,22 +27,6 @@ function ToastShelf() {
       ))}
     </ol>
   );
-}
-
-function useEscapeKey(callback) {
-  React.useEffect(() => {
-    function handleKeyDown(event) {
-      if (event.code === 'Escape') {
-        callback();
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [callback]);
 }
 
 export default ToastShelf;
