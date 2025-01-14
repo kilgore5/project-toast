@@ -22,6 +22,10 @@ function ToastProvider({ children }) {
     setToasts([...toastsToKeep]);
   };
 
+  const removeAllToasts = () => {
+    setToasts([]);
+  };
+
   return (
     <ToastContext.Provider
       value={{
@@ -32,6 +36,7 @@ function ToastProvider({ children }) {
         toasts,
         handleFormSubmit,
         removeToast,
+        removeAllToasts,
       }}
     >
       {children}
